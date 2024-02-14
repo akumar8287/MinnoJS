@@ -183,37 +183,37 @@ define(['managerAPI'], function (Manager) {
 			{ inherit: 'realstart' },
 
 			{ inherit: 'ageCheck' },
-			{
-				mixer: 'branch',
-				conditions: [
-					{
-						or: [[{ compare: 'global.ageCheck.questions.birthmonth.response', to: month, operator: 'greaterThan' },
-						{ compare: 'global.ageCheck.questions.birthyear.response', to: year2, operator: 'greaterThan' }],
-						[{ compare: 'global.ageCheck.questions.birthyear.response', to: year, operator: 'greaterThan' }]]
-					}
-				],
-				data: [
-					{ inherit: 'tooYoung' }]
-			},
-			{
-				mixer: 'branch',
-				conditions: [
-					{ compare: 'global.ageCheck.questions.birthmonth.response', to: month },
-					{ compare: 'global.ageCheck.questions.birthyear.response', to: year2, operator: 'greaterThan' }
-				],
-				data: [
-					{ inherit: 'under18' },
-					{
-						mixer: 'branch',
-						conditions: [
-							{ compare: 'global.under18.questions.under18.response', to: 2 }
-						],
-						data: [
-							{ inherit: 'tooYoung' }]
-					}
-				]
+			// {
+			// 	mixer: 'branch',
+			// 	conditions: [
+			// 		{
+			// 			or: [[{ compare: 'global.ageCheck.questions.birthmonth.response', to: month, operator: 'greaterThan' },
+			// 			{ compare: 'global.ageCheck.questions.birthyear.response', to: year2, operator: 'greaterThan' }],
+			// 			[{ compare: 'global.ageCheck.questions.birthyear.response', to: year, operator: 'greaterThan' }]]
+			// 		}
+			// 	],
+			// 	data: [
+			// 		{ inherit: 'tooYoung' }]
+			// },
+			// {
+			// 	mixer: 'branch',
+			// 	conditions: [
+			// 		{ compare: 'global.ageCheck.questions.birthmonth.response', to: month },
+			// 		{ compare: 'global.ageCheck.questions.birthyear.response', to: year2, operator: 'greaterThan' }
+			// 	],
+			// 	data: [
+			// 		{ inherit: 'under18' },
+			// 		{
+			// 			mixer: 'branch',
+			// 			conditions: [
+			// 				{ compare: 'global.under18.questions.under18.response', to: 2 }
+			// 			],
+			// 			data: [
+			// 				{ inherit: 'tooYoung' }]
+			// 		}
+			// 	]
 
-			},
+			// },
 			{
 				mixer: 'random', // randomize sequence of variables
 				data: [
